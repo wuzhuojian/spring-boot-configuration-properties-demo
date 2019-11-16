@@ -21,7 +21,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(properties = {"spring.profiles.active= default"})
 public class ConfigPropertiesDemoApplicationTests {
 
     @Autowired
