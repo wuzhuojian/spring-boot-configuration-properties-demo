@@ -19,12 +19,12 @@ public class AppProperties {
 
     @ConstructorBinding
     private AppProperties(String name, String description, String uploadDir, List<Security> security) {
-        log.debug("AppProperties Start");
+        log.debug("AppProperties.AppProperties Start");
         this.name = name;
         this.description = description;
         this.uploadDir = uploadDir;
         this.security = security;
-        log.debug("AppProperties End");
+        log.debug("AppProperties.AppProperties End");
     }
 }
 

@@ -19,11 +19,11 @@ public class IndexController {
 
     @GetMapping("/")
     public Map<String, String> getAppDetails() {
-        log.debug("getAppDetails Start");
+        log.debug("IndexController.getAppDetails Start");
         Map<String, String> appDetails = new HashMap<>();
         appDetails.put("name", appProperties.getName());
         appDetails.put("description", appProperties.getDescription());
-        log.debug("getAppDetails End");
+        log.debug("IndexController.getAppDetails End");
         return appDetails;
     }
 }

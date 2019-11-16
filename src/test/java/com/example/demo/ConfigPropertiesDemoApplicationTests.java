@@ -35,8 +35,9 @@ public class ConfigPropertiesDemoApplicationTests {
 
     @BeforeClass
     public static void before() {
-        System.out.println("ConfigPropertiesDemoApplicationTests Start");
+        System.out.println("ConfigPropertiesDemoApplicationTests.before Start");
         delete(new File("logs/"));
+        System.out.println("ConfigPropertiesDemoApplicationTests.before End");
     }
 
     @Test
@@ -86,8 +87,9 @@ public class ConfigPropertiesDemoApplicationTests {
 
     @AfterClass
     public static void after() {
-        System.out.println("ConfigPropertiesDemoApplicationTests End");
+        System.out.println("ConfigPropertiesDemoApplicationTests.after Start");
         delete(new File("logs/"));
+        System.out.println("ConfigPropertiesDemoApplicationTests.after End");
     }
 
 }
