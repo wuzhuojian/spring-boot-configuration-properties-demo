@@ -16,7 +16,7 @@
         <file>${DEV_HOME}/debug.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
-                %d{"yyyy-MM-dd HH:mm:ss,SSS"} [%thread] %-5level %logger{26} - %msg%n
+                %d{"yyyy-MM-dd HH:mm:ss,SSS"} [%thread] %-5level %logger - %msg%n
             </Pattern>
         </encoder>
 
@@ -38,7 +38,7 @@
         <file>${DEV_HOME}/error.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
-                %d{"yyyy-MM-dd HH:mm:ss,SSS"} [%thread] %-5level %logger{26} - %msg%n
+                %d{"yyyy-MM-dd HH:mm:ss,SSS"} [%thread] %-5level %logger - %msg%n
             </Pattern>
         </encoder>
 
