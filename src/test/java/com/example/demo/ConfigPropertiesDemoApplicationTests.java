@@ -35,7 +35,7 @@ public class ConfigPropertiesDemoApplicationTests {
 
     @BeforeClass
     public static void before() {
-        System.out.println("开始测试-----------------");
+        System.out.println("ConfigPropertiesDemoApplicationTests Start");
         delete(new File("logs/"));
     }
 
@@ -86,7 +86,7 @@ public class ConfigPropertiesDemoApplicationTests {
 
     @AfterClass
     public static void after() {
-        System.out.println("结束测试-----------------");
+        System.out.println("ConfigPropertiesDemoApplicationTests End");
         delete(new File("logs/"));
     }
 
