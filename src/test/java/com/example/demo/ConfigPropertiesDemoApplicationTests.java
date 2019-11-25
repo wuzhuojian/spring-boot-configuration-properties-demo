@@ -10,15 +10,17 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.ResourceUtils;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = {"spring.profiles.active= default"})
@@ -27,17 +29,17 @@ public class ConfigPropertiesDemoApplicationTests {
     @Autowired
     AppProperties appProperties;
 
-    static String fileName = "debug";
-
-    static String filePath = "logs/" + fileName + ".log";
-
-    static File file = new File(filePath);
-
     @BeforeClass
-    public static void before() {
+    public static void before() throws IOException {
         System.out.println("ConfigPropertiesDemoApplicationTests.before Start");
-        delete(new File("logs/"));
+        Files.deleteIfExists(Paths.get("logs/debug.log"));
         System.out.println("ConfigPropertiesDemoApplicationTests.before End");
+    }
+
+    @AfterClass
+    public static void after() throws IOException {
+        System.out.println("ConfigPropertiesDemoApplicationTests.after Start");
+        System.out.println("ConfigPropertiesDemoApplicationTests.after End");
     }
 
     @Test
@@ -53,43 +55,13 @@ public class ConfigPropertiesDemoApplicationTests {
         assertEquals("callicoder1", security1.getUsername());
         assertEquals("callicoder2", security2.getUsername());
 
-        Assert.assertThat(readAll(filePath), containsString("AppProperties Start"));
-    }
+        Assert.assertThat(Files.readAllLines(Paths.get("logs/debug.log")).toString(), containsString("AppProperties Start"));
 
-    private String readAll(String path) throws IOException {
-        StringBuilder builder = new StringBuilder();
+        File file = ResourceUtils.getFile("classpath:META-INF/spring-configuration-metadata.json");
+        assertTrue(file.exists());
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            String string = reader.readLine();
-            while (string != null) {
-                builder.append(string + System.getProperty("line.separator"));
-                string = reader.readLine();
-            }
-        }
+        Files.isSameFile(Paths.get("expect/spring-configuration-metadata.json"), Paths.get(file.getPath()));
 
-        return builder.toString();
-    }
-
-    private static void delete(File f) {
-        if (f.exists() == false) {
-            return;
-        }
-        if (f.isFile()) {
-            f.delete();
-        } else if (f.isDirectory()) {
-            File[] files = f.listFiles();
-            for (int i = 0; i < files.length; i++) {
-                delete(files[i]);
-            }
-            f.delete();
-        }
-    }
-
-    @AfterClass
-    public static void after() {
-        System.out.println("ConfigPropertiesDemoApplicationTests.after Start");
-        delete(new File("logs/"));
-        System.out.println("ConfigPropertiesDemoApplicationTests.after End");
     }
 
 }

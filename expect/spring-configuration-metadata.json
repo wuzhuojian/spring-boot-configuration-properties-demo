@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "app",
+      "type": "com.example.demo.config.AppProperties",
+      "sourceType": "com.example.demo.config.AppProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.description",
+      "type": "java.lang.String",
+      "sourceType": "com.example.demo.config.AppProperties"
+    },
+    {
+      "name": "app.name",
+      "type": "java.lang.String",
+      "sourceType": "com.example.demo.config.AppProperties"
+    },
+    {
+      "name": "app.security",
+      "type": "java.util.List<com.example.demo.model.Security>",
+      "sourceType": "com.example.demo.config.AppProperties"
+    },
+    {
+      "name": "app.upload-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.example.demo.config.AppProperties"
+    }
+  ],
+  "hints": []
+}
