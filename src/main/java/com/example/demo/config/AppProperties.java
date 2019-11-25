@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Slf4j

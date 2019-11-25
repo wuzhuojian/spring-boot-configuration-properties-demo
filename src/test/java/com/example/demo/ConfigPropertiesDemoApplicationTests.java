@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.config.AppProperties;
 import com.example.demo.model.Security;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -53,7 +55,7 @@ public class ConfigPropertiesDemoApplicationTests {
         assertEquals("callicoder1", security1.getUsername());
         assertEquals("callicoder2", security2.getUsername());
 
-        //Assert.assertThat(Files.readAllLines(Paths.get("logs/debug.log")).toString(), containsString("AppProperties Start"));
+        Assert.assertThat(Files.readAllLines(Paths.get("logs/debug.log")).toString(), containsString("AppProperties Start"));
 
         File file = ResourceUtils.getFile("classpath:META-INF/spring-configuration-metadata.json");
         File expectFile = ResourceUtils.getFile("file:./expect/spring-configuration-metadata.json");
@@ -64,4 +66,5 @@ public class ConfigPropertiesDemoApplicationTests {
 
         assertEquals(expectContents, contents);
     }
+
 }
