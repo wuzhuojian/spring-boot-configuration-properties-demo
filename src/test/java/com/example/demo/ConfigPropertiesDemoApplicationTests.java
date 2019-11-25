@@ -55,12 +55,14 @@ public class ConfigPropertiesDemoApplicationTests {
         assertEquals("callicoder1", security1.getUsername());
         assertEquals("callicoder2", security2.getUsername());
 
-        Assert.assertThat(Files.readAllLines(Paths.get("logs/debug.log")).toString(), containsString("AppProperties Start"));
+        //Assert.assertThat(Files.readAllLines(Paths.get("logs/debug.log")).toString(), containsString("AppProperties Start"));
 
         File file = ResourceUtils.getFile("classpath:META-INF/spring-configuration-metadata.json");
+        File expectFile = ResourceUtils.getFile("file:./expect/spring-configuration-metadata.json");
         assertTrue(file.exists());
 
-        Files.isSameFile(Paths.get("expect/spring-configuration-metadata.json"), Paths.get(file.getPath()));
+        assertTrue(expectFile.compareTo(file));
+        assertTrue(Files.isSameFile(Paths.get("expect/spring-configuration-metadata.json"), Paths.get(file.getPath()));
 
     }
 

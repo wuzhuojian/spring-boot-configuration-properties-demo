@@ -8,6 +8,11 @@
   ],
   "properties": [
     {
+      "name": "app.colors",
+      "type": "java.util.List<com.example.demo.model.Color>",
+      "sourceType": "com.example.demo.config.AppProperties"
+    },
+    {
       "name": "app.description",
       "type": "java.lang.String",
       "sourceType": "com.example.demo.config.AppProperties"
