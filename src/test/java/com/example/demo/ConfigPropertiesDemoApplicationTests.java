@@ -45,6 +45,8 @@ public class ConfigPropertiesDemoApplicationTests {
     @Test
     public void contextLoads() throws IOException {
 
+        ConfigPropertiesDemoApplication.main(new String[] {});
+
         assertEquals("ConfigurationPropertiesDemoApp", appProperties.getName());
 
         List<Security> securitys = appProperties.getSecurity();
